@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "dist",
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": [
+        "es5", "es6", "dom", "dom.iterable"
+    ]
+  },
+  "compileOnSave": false,
+  "include": [
+      "src/**/*.ts"
+  ],
+  "exclude": [
+      "node_modules",
+      "test/**/*.ts"
+  ]
+}

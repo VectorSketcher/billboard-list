@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Users",
+        "description": "Get Users API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:2000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API To Find Users"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/getusers": {
+            "get": {
+                "operationId" : "UsersRouterGet",
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users",  
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResponseBodyUsers[]"
+                        }
+                    }
+                },
+                "parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 0
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 20
+					}
+				]
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "disclaimerAccepted": {
+                    "type": "boolean"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zipCode": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "languageCode": {
+                    "type": "string"
+                },
+                "emailAddress": {
+                    "type": "string"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "id": "string"
+                },
+                "registrationId": {
+                    "type": "string"
+                },
+                "registrationIdGeneratedTime": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                
+            ]
+        },
+        "PagedResponseBodyUsers[]": {
+            "description": "",
+            "properties": {
+                "paging": {
+                    "type": "object",
+                    "properties": {
+                        "rows": {
+                            "type": "number",
+                            "format": "double",
+                            "description": ""
+                        },
+                        "pages": {
+                            "type": "number",
+                            "format": "double",
+                            "description": ""
+                        },
+                        "offset": {
+                            "type": "number",
+                            "format": "double",
+                            "description": ""
+                        },
+                        "limit": {
+                            "type": "number",
+                            "format": "double",
+                            "description": ""
+                        },
+                        "links": {
+                            "type": "object",
+                            "properties": {
+                                "first": {
+                                    "type": "string",
+                                    "description": ""
+                                },
+                                "last": {
+                                    "type": "string",
+                                    "description": ""
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "description": ""
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "description": ""
+                                }
+                            },
+                            "description": ""
+                        }
+                    },
+                    "description": ""
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "description": ""
+                }
+            },
+            "type": "object",
+            "required": [
+                "paging",
+                "data"
+            ]
+        }
+    }
+}
