@@ -11,9 +11,9 @@ COPY package.json /usr/src/app/
 # Bundle app source
 COPY . /usr/src/app
 
-RUN npm run build
+RUN npm install
 
 # Expose Your Port!!!!
-#EXPOSE 2000
+EXPOSE 2000
 
 CMD [ "npm", "start" ]

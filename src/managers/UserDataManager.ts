@@ -1,10 +1,7 @@
-// this would be used for database calls
 import axios from 'axios';
 import { UsersResponse } from '../types/models/users';
-import { BaseCountClass } from '../types/count';
-import { PagingConfig } from '../types/paging';
 
-class UserDataManager extends BaseCountClass {
+class UserDataManager {
   // get all users
   async getUsers(): Promise<UsersResponse[]> {
     let mergedUsers: any;
@@ -15,14 +12,14 @@ class UserDataManager extends BaseCountClass {
         this.getUnRegisteredUsers(),
         this.getProjectMemberships()
       ]);
-      // step 2, merge all users together into one array
+      // step 2, merge registered & unregistered users together into one array
       if (registered && unregistered && memberships) {
         mergedUsers = [...registered, ...unregistered];
-        // step 3, for each element of users push empty projectid array
+        // step 3, for each element of users push empty projectids array
         mergedUsers.forEach(element => {
           element.projectIds = [];
         });
-        // step 4, now compare all users array to our membership array finding project ids
+        // step 4, now compare data, if id from users array matches the userid from memberships array, push project ids into an array for users
         for (let i = 0; i < mergedUsers.length; i++) {
           for (let j = 0; j < memberships.length; j++) {
             if (mergedUsers[i].id === memberships[j].userId) {

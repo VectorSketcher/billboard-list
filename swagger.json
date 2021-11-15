@@ -43,14 +43,7 @@
                         }
                     }
                 },
-                "parameters": [
-					{
-						"description": "",
-						"in": "query",
-						"name": "id",
-						"required": false,
-						"type": "string"
-					},
+                "parameters": [					
 					{
 						"description": "",
 						"in": "query",

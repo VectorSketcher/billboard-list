@@ -43,7 +43,6 @@ let UsersRouter = class UsersRouter {
                 ]);
                 // page count of all users
                 const count = Array.prototype.push.apply(allUsers);
-                allUsers.slice((offset - 1) * limit + 1);
                 // returning data along with pagination
                 return {
                     data: allUsers,
