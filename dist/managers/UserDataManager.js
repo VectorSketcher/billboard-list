@@ -9,10 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// this would be used for database calls
 const axios_1 = require("axios");
-const count_1 = require("../types/count");
-class UserDataManager extends count_1.BaseCountClass {
+class UserDataManager {
     // get all users
     getUsers() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -24,14 +22,14 @@ class UserDataManager extends count_1.BaseCountClass {
                     this.getUnRegisteredUsers(),
                     this.getProjectMemberships()
                 ]);
-                // step 2, merge all users together into one array
+                // step 2, merge registered & unregistered users together into one array
                 if (registered && unregistered && memberships) {
                     mergedUsers = [...registered, ...unregistered];
-                    // step 3, for each element of users push empty projectid array
+                    // step 3, for each element of users push empty projectids array
                     mergedUsers.forEach(element => {
                         element.projectIds = [];
                     });
-                    // step 4, now compare all users array to our membership array finding project ids
+                    // step 4, now compare data, if id from users array matches the userid from memberships array, push project ids into an array for users
                     for (let i = 0; i < mergedUsers.length; i++) {
                         for (let j = 0; j < memberships.length; j++) {
                             if (mergedUsers[i].id === memberships[j].userId) {
