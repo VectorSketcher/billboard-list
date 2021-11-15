@@ -34,7 +34,7 @@ small code test
 5. view swagger doc at http://localhost:2000/api-docs/ 
 4. ctrl c to stop container or through docker desktop
 
-###Running Tests
+### III. Running Tests
 Just has one small test, tests to make sure the response returns a '200'
 1. in order to run test use this command, **" npm run test "**
 
