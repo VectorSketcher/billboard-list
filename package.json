@@ -1,7 +1,7 @@
 {
-  "name": "datasite",
+  "name": "billboard-list",
   "version": "1.0.0",
-  "description": "code-test",
+  "description": "list of top 100 billboard songs of all time",
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VectorSketcher/datasite-code-test.git"
+    "url": "git+https://github.com/VectorSketcher/billboard-list.git"
   },
   "keywords": [
     "NodeJs",
@@ -21,9 +21,9 @@
   "author": "Michelle West",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VectorSketcher/datasite-code-test/issues"
+    "url": "https://github.com/VectorSketcher/billboard-list.git/issues"
   },
-  "homepage": "https://github.com/VectorSketcher/datasite-code-test#readme",
+  "homepage": "https://github.com/VectorSketcher/billboard-list.git#readme",
   "dependencies": {
     "@cspotcode/source-map-support": "^0.7.0",
     "@types/cors": "^2.8.12",

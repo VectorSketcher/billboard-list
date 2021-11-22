@@ -1,4 +1,4 @@
-## datasite-code-test
+## billboard-list-code-test
 small code test
 ##### Made With
 1. Typescript (4.4.4)
@@ -15,7 +15,7 @@ small code test
 
 ### II. Few Ways to Get Running
 #### running endpoint 
-1. clone project ' git clone https://github.com/VectorSketcher/datasite-code-test.git ' , cd into cloned project
+1. clone project ' git clone https://github.com/VectorSketcher/billboard-list-code-test.git ' , cd into cloned project
 2. npm install dependencies ' npm install '
 3. 'npm run build', makes sure things are built
 4. 'npm start', starts project
