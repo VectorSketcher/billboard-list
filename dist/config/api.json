@@ -1,0 +1,81 @@
+{
+    "apiSettings": {
+        "localPort": "2000"
+    },
+    "dataSources": {
+        "user": "cgcwzwjn",
+        "password": "xeyRR-pIGARB413PtO1Ptjt2lXTYENlu",
+        "database": "cgcwzwjn",
+        "connectionString": "kashin.db.elephantsql.com"
+    },
+    "log4js": {
+        "appenders": {
+            "console": {
+                "type": "console",
+                "layout": {
+                    "type": "pattern",
+                    "pattern": "{\"dateTime\": \"%d\", \"logLevel\": \"%-5p\", \"hostName\": \"%h\", \"logCategory\": \"%c\", \"data\": %m}%n"
+                }
+            },
+            "consoleInfo": {
+                "type": "console",
+                "layout": {
+                    "type": "pattern",
+                    "pattern": "{\"dateTime\": \"%d\", \"logLevel\": \"%-5p\", \"hostName\": \"%h\", \"logCategory\": \"%c\", \"data\": \"%m\"}%n"
+                }
+            },
+            "json": {
+                "type": "console",
+                "layout": {
+                    "type": "json",
+                    "separator": ","
+                }
+            },
+            "color": {
+                "type": "console",
+                "layout": {
+                    "type": "colored"
+                }
+            }
+        },
+        "categories": {
+            "default": {
+                "appenders": [
+                    "json"
+                ],
+                "level": "debug"
+            },
+            "metrics": {
+                "appenders": [
+                    "json"
+                ],
+                "level": "debug"
+            },
+            "errors": {
+                "appenders": [
+                    "json"
+                ],
+                "level": "debug"
+            },
+            "info": {
+                "appenders": [
+                    "json",
+                    "color"
+                ],
+                "level": "info"
+            },
+            "trace": {
+                "appenders": [
+                    "json"
+                ],
+                "level": "debug"
+            },
+            "routes": {
+                "appenders": [
+                    "json"
+                ],
+                "level": "debug"
+            }
+        }
+    }
+}

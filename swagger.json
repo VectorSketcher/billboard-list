@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Users",
-        "description": "Get Users API",
+        "title": "Top Billboard Songs",
+        "description": "Post Songs API",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
@@ -13,8 +13,8 @@
     "basePath": "/",
     "tags": [
         {
-            "name": "Users",
-            "description": "API To Find Users"
+            "name": "Top One Hundred Billboard Songs",
+            "description": "API To Find Top Songs of All Time"
         }
     ],
     "schemes": [
@@ -28,94 +28,121 @@
         "application/json"
     ],
     "paths": {
-        "/getusers": {
+        "/toponehundred": {
             "get": {
-                "operationId" : "UsersRouterGet",
+                "operationId" : "TopOneHundredRouterGet",
                 "tags": [
-                    "Users"
+                    "Get Songs to Top One Hundred"
                 ],
-                "summary": "Get all users",  
+                "summary": "Get a song",  
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/PagedResponseBodyUsers[]"
+                            "$ref": "#/definitions/TopOneHundred"
                         }
                     }
                 },
-                "parameters": [					
+                "parameters": [
 					{
-						"description": "",
+						"description": "The ID of the Song to retrieve",
 						"in": "query",
-						"name": "offset",
+						"name": "topOneHundredId",
 						"required": false,
-						"type": "number",
-						"format": "double",
-						"default": 0
+                        "type": "string"
 					},
-					{
-						"description": "",
+                    {
+						"description": "The artist name to retrieve",
 						"in": "query",
-						"name": "limit",
+						"name": "artist",
 						"required": false,
-						"type": "number",
-						"format": "double",
-						"default": 20
+                        "type": "string"
+					},
+                    {
+						"description": "The artist type to retrieve",
+						"in": "query",
+						"name": "artistType",
+						"required": false,
+                        "type": "string"
+					},
+                    {
+						"description": "The released year to retrieve",
+						"in": "query",
+						"name": "releaseYear",
+						"required": false,
+                        "type": "string"
+					},
+                    {
+						"description": "The album to retrieve",
+						"in": "query",
+						"name": "album",
+						"required": false,
+                        "type": "string"
+					},
+                    {
+						"description": "Filter by Favorite",
+						"in": "query",
+						"name": "album",
+						"required": false,
+                        "type": "string"
+					}
+				]
+            },
+            "post": {
+                "operationId" : "TopOneHundredRouterPost",
+                "tags": [
+                    "Add Song to Top One Hundred"
+                ],
+                "summary": "Post a song",  
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TopOneHundred"
+                        }
+                    }
+                },
+                "parameters": [
+					{
+						"description": "The Song to create",
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/TopOneHundred"
+						}
 					}
 				]
             }
         }
     },
     "definitions": {
-        "User": {
+        "TopOneHundred": {
             "properties": {
-                "id": {
+                "topOneHundredId": {
                     "type": "string"
                 },
-                "disclaimerAccepted": {
+                "favorite": {
                     "type": "boolean"
                 },
-                "city": {
+                "artist": {
                     "type": "string"
                 },
-                "state": {
+                "artistType": {
                     "type": "string"
                 },
-                "zipCode": {
+                "releaseYear": {
                     "type": "string"
                 },
-                "company": {
-                    "type": "string"
-                },
-                "firstName": {
-                    "type": "string"
-                },
-                "lastName": {
-                    "type": "string"
-                },
-                "languageCode": {
-                    "type": "string"
-                },
-                "emailAddress": {
-                    "type": "string"
-                },
-                "projectIds": {
-                    "type": "array",
-                    "id": "string"
-                },
-                "registrationId": {
-                    "type": "string"
-                },
-                "registrationIdGeneratedTime": {
+                "album": {
                     "type": "string"
                 }
             },
             "type": "object",
-            "required": [
-                
+            "required": [                
             ]
         },
-        "PagedResponseBodyUsers[]": {
+        "PagedResponseBodySongs[]": {
             "description": "",
             "properties": {
                 "paging": {
@@ -169,7 +196,7 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/User"
+                        "$ref": "#/definitions/TopOneHundred"
                     },
                     "description": ""
                 }

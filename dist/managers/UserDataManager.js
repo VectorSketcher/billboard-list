@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
-class UserDataManager {
+class BillboardSongsDataManager {
     // get all users
     getUsers() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -68,5 +68,5 @@ class UserDataManager {
         });
     }
 }
-exports.default = UserDataManager;
-//# sourceMappingURL=UserDataManager.js.map
+exports.default = BillboardSongsDataManager;
+//# sourceMappingURL=BillboardSongsDataManager.js.map

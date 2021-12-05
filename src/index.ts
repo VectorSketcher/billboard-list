@@ -1,4 +1,3 @@
-
 import debug = require('debug');
 import { createServer } from 'http';
 import App from './app';

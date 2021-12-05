@@ -25,10 +25,10 @@ const typescript_rest_1 = require("typescript-rest");
 const typescript_rest_swagger_1 = require("typescript-rest-swagger");
 const errors_1 = require("typescript-rest/dist/server/model/errors");
 const getPagingInfo_1 = require("../lib/getPagingInfo");
-const UserDataManager_1 = require("../managers/UserDataManager");
-let UsersRouter = class UsersRouter {
+const UserDataManager_1 = require("../managers/BillboardSongsDataManager");
+let TopOneHundred = class TopOneHundred {
     constructor() {
-        this.userDataManager = new UserDataManager_1.default();
+        this.billboardSongsDataManager = new UserDataManager_1.default();
     }
     /**
           * Get list of registered users
@@ -39,7 +39,7 @@ let UsersRouter = class UsersRouter {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const [allUsers] = yield Promise.all([
-                    this.userDataManager.getUsers()
+                    this.billboardSongsDataManager.getUsers()
                 ]);
                 // page count of all users
                 const count = Array.prototype.push.apply(allUsers);
@@ -62,10 +62,10 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
-], UsersRouter.prototype, "getUsers", null);
-UsersRouter = __decorate([
+], TopOneHundred.prototype, "getUsers", null);
+TopOneHundred = __decorate([
     (0, typescript_rest_swagger_1.Tags)('Registered Users'),
     (0, typescript_rest_1.Path)('/getusers')
-], UsersRouter);
-exports.default = UsersRouter;
-//# sourceMappingURL=UsersRouter.js.map
+], TopOneHundred);
+exports.default = TopOneHundred;
+//# sourceMappingURL=TopOneHundred.js.map
