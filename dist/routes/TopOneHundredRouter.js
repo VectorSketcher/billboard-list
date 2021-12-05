@@ -39,13 +39,13 @@ let TopOneHundredRouter = class TopOneHundredRouter {
           * @Param offset
           * @Param limit
           */
-    getTopOneHundred(topOneHundredId, artist, artistType, releaseYear, album, favorite, offset = 0, limit = 20) {
+    getTopOneHundred(topOneHundredId, artist, artistType, releaseYear, album, isFavorite, offset = 0, limit = 100) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const filter = { topOneHundredId, artist, artistType, releaseYear, album, favorite };
-                const allSongs = yield this.billboardSongsDataManager.getSongs2(filter, { offset, limit });
+                const filter = { topOneHundredId, artist, artistType, releaseYear, album, isFavorite };
+                const allSongs = yield this.billboardSongsDataManager.getSongs(filter, { offset, limit });
                 // page count of all songs
-                const count = Array.prototype.push.apply(allSongs);
+                const count = Array.prototype.push.apply(limit);
                 return {
                     data: allSongs,
                     paging: (0, getPagingInfo_1.getPagingInfo)('/toponehundred', offset, limit, count)
@@ -68,6 +68,16 @@ let TopOneHundredRouter = class TopOneHundredRouter {
             return { data: item };
         });
     }
+    /**
+       * Favorite or De-Favorite a Song
+       * @param topOneHundredId The ID of the Song to Favorite
+       */
+    putFavorite(topOneHundredId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const item = yield this.billboardSongsDataManager.favorite(topOneHundredId);
+            return { data: item };
+        });
+    }
 };
 __decorate([
     typescript_rest_1.GET,
@@ -76,7 +86,7 @@ __decorate([
     __param(2, (0, typescript_rest_1.QueryParam)('artistType')),
     __param(3, (0, typescript_rest_1.QueryParam)('releaseYear')),
     __param(4, (0, typescript_rest_1.QueryParam)('album')),
-    __param(5, (0, typescript_rest_1.QueryParam)('favorite')),
+    __param(5, (0, typescript_rest_1.QueryParam)('isFavorite')),
     __param(6, (0, typescript_rest_1.QueryParam)('offset')),
     __param(7, (0, typescript_rest_1.QueryParam)('limit')),
     __metadata("design:type", Function),
@@ -89,6 +99,14 @@ __decorate([
     __metadata("design:paramtypes", [topOneHundredModel_1.TopOneHundred]),
     __metadata("design:returntype", Promise)
 ], TopOneHundredRouter.prototype, "postTopOneHundred", null);
+__decorate([
+    (0, typescript_rest_1.Path)('favorite/:id'),
+    typescript_rest_1.PUT,
+    __param(0, (0, typescript_rest_1.QueryParam)('topOneHundredId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TopOneHundredRouter.prototype, "putFavorite", null);
 TopOneHundredRouter = __decorate([
     (0, typescript_rest_swagger_1.Tags)('Gets Top One Hundred Songs'),
     (0, typescript_rest_1.Path)('/toponehundred')

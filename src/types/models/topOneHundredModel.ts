@@ -1,34 +1,46 @@
+import { IsDefined } from 'class-validator';
 export interface TopOneHundredPost {
     artist: string;
     artistType: string;
     album: string;
-    releaseYear: Date;
-    favorite: boolean;
+    releaseYear: string;
+    isFavorite: boolean;
+}
+export interface TopOneHundredPut {
+topOneHundredId: string;
+artist: string;
+artistType: string;
+album: string;
+releaseYear: string;
+isFavorite: boolean;
 }
 export interface TopOneHundredResponse {
-    topOneHundredId: string;
-    artist: string;
-    artistType: string;
-    album: string;
-    releaseYear: Date;
-    favorite: boolean;
-    response: any;
-}
 
-export class TopOneHundred {
     topOneHundredId: string;
     artist: string;
     artistType: string;
     album: string;
     releaseYear: string;
-    favorite: boolean;
+    isFavorite: boolean;
+    response: any;
+}
 
-    constructor(data: TopOneHundred) {
+export class TopOneHundred {
+    @IsDefined()
+    topOneHundredId: string;
+
+    artist: string;
+    artistType: string;
+    album: string;
+    releaseYear: string;
+    isFavorite: boolean;
+
+    constructor(data: Partial<TopOneHundred | TopOneHundredPut>) {
       this.topOneHundredId = data.topOneHundredId;
       this.artist = data.artist;
       this.artistType = data.artistType;
       this.album = data.album;
       this.releaseYear = data.releaseYear;
-      this.favorite = data.favorite;
+      this.isFavorite = data.isFavorite;
     }
 }

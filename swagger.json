@@ -2,21 +2,12 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Top Billboard Songs",
-        "description": "Post Songs API",
-        "license": {
-            "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
-        }
+        "title": "Top One Hundred Billboard Songs",
+        "description": "API To Find Top Songs of All Time"
     },
     "host": "localhost:2000",
-    "basePath": "/",
-    "tags": [
-        {
-            "name": "Top One Hundred Billboard Songs",
-            "description": "API To Find Top Songs of All Time"
-        }
-    ],
+    "basePath": "/"
+    ,
     "schemes": [
         "http",
         "https"
@@ -31,6 +22,7 @@
         "/toponehundred": {
             "get": {
                 "operationId" : "TopOneHundredRouterGet",
+                "description" : "Gets all songs or will filter what your looking for",
                 "tags": [
                     "Get Songs to Top One Hundred"
                 ],
@@ -82,14 +74,33 @@
                     {
 						"description": "Filter by Favorite",
 						"in": "query",
-						"name": "album",
+						"name": "isFavorite",
 						"required": false,
-                        "type": "string"
+                        "type": "boolean"
+					},                   
+					{
+						"description": "The paging offset",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 0
+					},
+					{
+						"description": "The paging limit",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 100
 					}
 				]
             },
             "post": {
                 "operationId" : "TopOneHundredRouterPost",
+                "description" : "Post a new song",
                 "tags": [
                     "Add Song to Top One Hundred"
                 ],
@@ -114,6 +125,33 @@
 					}
 				]
             }
+        },
+        "/toponehundred/favorite/{id}" : {
+            "put": {
+                "operationId" : "TopOneHundredRouterPutFavorite",
+                "description" : "Update your favorites, this will favorite a song and de-favorite a song, just need to supply the top_one_hundred_id",
+                "tags": [
+                    "Update 'Favorite' Status on Song"
+                ],
+                "summary": "Update a favorite on a song",  
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TopOneHundred"
+                        }
+                    }
+                },
+                "parameters": [
+					{
+						"description": "The ID of the Song to retrieve",
+						"in": "query",
+						"name": "topOneHundredId",
+						"required": true,
+                        "type": "string"
+					}
+				]
+            }
         }
     },
     "definitions": {
@@ -121,9 +159,6 @@
             "properties": {
                 "topOneHundredId": {
                     "type": "string"
-                },
-                "favorite": {
-                    "type": "boolean"
                 },
                 "artist": {
                     "type": "string"
@@ -136,6 +171,9 @@
                 },
                 "album": {
                     "type": "string"
+                },
+                "isFavorite": {
+                    "type": "boolean"
                 }
             },
             "type": "object",

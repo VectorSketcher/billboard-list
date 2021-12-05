@@ -23,7 +23,6 @@ class App {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(bodyParser.text());
-        //  this.dbConnect();
         this.handleErrors();
     }
     // grabs data from routers and reads it
