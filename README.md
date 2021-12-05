@@ -1,5 +1,5 @@
 ## billboard-list-code-test
-small code test
+Small service with get, post and put operations. Has the ability to view, post, filter, and favorite the top one hundred songs of all time.
 ##### Made With
 1. Typescript (4.4.4)
 2. Node.js (14)
