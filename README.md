@@ -8,7 +8,7 @@ Small service with get, post and put operations. Has the ability to view, post, 
 5. Swagger Docs
 6. Mocha/Chai Testing
 7. Postgres DB
-    1. uses https://api.elephantsql.com/ 
+    1. uses https://www.elephantsql.com/
 ### I. Prerequisites
 1. Node 14 or later installed
 2. [ESLint](https://eslint.org/)
